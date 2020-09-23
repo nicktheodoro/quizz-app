@@ -2,7 +2,7 @@ import React from 'react'
 import {BrowserRouter, Route} from 'react-router-dom'
 
 import Main from './components/main/index'
-import Quizz from './components/quizzteste/index'
+import Quizz from './components/quizz/index'
 
 const Routes = () => (
     <BrowserRouter>
