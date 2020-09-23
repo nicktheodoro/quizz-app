@@ -1,12 +1,29 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import Routes from './routes'
 
-import Main from './pages/main/index'
+import Header from './components/header/index'
+
+import API_URL from './services/api'
 
 import './styles.css'
 
-function App () {
+function App() {
+
+  const [questions, setQuestions] = useState([])
+
+  useEffect(() => {
+      fetch(API_URL)
+          .then(res => res.json())
+          .then(data => {
+              setQuestions(data.results)
+          })
+  }, [])
+  
     return (
-      <Main />
+      <div className='App'>
+        <Header />
+        <Routes />
+      </div>
     )
 }
 
