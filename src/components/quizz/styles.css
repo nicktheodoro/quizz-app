@@ -1,5 +1,5 @@
 .container {
-    margin: 2rem auto;
+    margin: 4rem auto;
     padding: 1em;
 
     border: 1px solid rgba(34,36,38,.15);
@@ -13,13 +13,25 @@
     width: 80%;
 }
 
+.container .ui-question {
+    text-align: center;
+}
+
 .container hr {
     margin-top: .8rem;
 
     color: rgba(34,36,38,.15);
 }
 
-.container .ui-answer{
+.answer-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+
+    padding: 1rem;
+}
+
+.container .ui-btn-answer{
     margin: .8rem auto;
     padding: 1rem;
 
@@ -31,28 +43,9 @@
 
     color: rgba(0,0,0,.6);
 
-    width: 100%;
+    width: 90%;
 }
 
-.container .ui-start-btn {
-    background: #2185d0;
-
-    color: #fff;
-    font-weight: bold;
-    font-size: 1.2rem;
-
-    margin-top: .8rem;
-    padding: .8rem;
-
-    border: none;
-    border-radius: 0.25rem;
-
-    width: 150px;
-
-    cursor: pointer;
-    transition: 0.2;
-}
-
-.container .ui-start-btn:hover{
-    background: #1e76b9;
+.container .ui-btn-answer:hover {
+    background: #dfdfdf;
 }
