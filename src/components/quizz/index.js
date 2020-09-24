@@ -7,6 +7,7 @@ import './styles.css'
 
 function Quizz() {
     const [questions, setQuestions] = useState([])
+    const [currentIndex, setCurrentIndex] = useState(0)
 
     useEffect(() => {
         fetch(API_URL)
@@ -17,14 +18,21 @@ function Quizz() {
     }, [])
 
     const handleAnswer = (answer) => {
+        setCurrentIndex(currentIndex +1)
         //check for the answer
+
+        //show another question
+
+        //change score if correct
     }
 
-    return questions.length > 0 ?
-        <Questinaire data={questions[0]} handleAnswer={handleAnswer}/>
-        :
-        (<h1>Loading</h1>)
-
+    return questions.length > 0 ? (
+        <div>
+            <Questinaire data={questions[currentIndex]} handleAnswer={handleAnswer} />
+        </div>
+    ) : (
+            <h1>Loading</h1>
+        )
 
 }
 
