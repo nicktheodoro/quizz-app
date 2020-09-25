@@ -15,10 +15,11 @@ const Questionaire = ({
             <hr size='1'></hr>
             <div className='answer-container'>
                 {shuffledAnswers.map(answer => (
-                    <button className='ui-btn-answer'
-                        onClick={() => handleAnswer(answer)} answer={answer}>
-                        {answer}
-                    </button>
+                    <button
+                        className='ui-btn-answer'
+                        onClick={() => handleAnswer(answer)} answer={answer}
+                        dangerouslySetInnerHTML={{ __html: answer }}
+                    />
                 ))}
             </div>
         </div>
