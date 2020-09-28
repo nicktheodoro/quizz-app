@@ -1,10 +1,10 @@
 import React from 'react'
 
 const Questionaire = ({
+    showAnswers,
     handleAnswer,
     data: { question, correct_answer, incorrect_answers },
 }) => {
-
     const shuffledAnswers = [correct_answer, ...incorrect_answers].sort(() => Math.random() - 0.5)
 
     return (
@@ -14,13 +14,21 @@ const Questionaire = ({
             </div>
             <hr size='1'></hr>
             <div className='answer-container'>
-                {shuffledAnswers.map(answer => (
-                    <button
-                        className='ui-btn-answer'
-                        onClick={() => handleAnswer(answer)} answer={answer}
-                        dangerouslySetInnerHTML={{ __html: answer }}
-                    />
-                ))}
+                {shuffledAnswers.map((answer) => {
+                    const bgColor = showAnswers
+                        ? answer === correct_answer
+                            ? 'green'
+                            : 'red'
+                        : 'white'
+                    return (
+                        <button
+                            className='ui-btn-answer'
+                            style={{ backgroundColor: `${bgColor}` }}
+                            onClick={() => handleAnswer(answer)} answer={answer}
+                            dangerouslySetInnerHTML={{ __html: answer }}
+                        />
+                    )
+                })}
             </div>
         </div>
     )

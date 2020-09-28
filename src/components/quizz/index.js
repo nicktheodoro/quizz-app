@@ -9,7 +9,7 @@ function Quizz() {
     const [questions, setQuestions] = useState([])
     const [currentIndex, setCurrentIndex] = useState(0)
     const [score, setScore] = useState(0)
-    const [gameEnded, setGameEnded] = useState(false)
+    const [showAnswers, setShowAnswers] = useState(false)
 
     useEffect(() => {
         fetch(API_URL)
@@ -20,28 +20,31 @@ function Quizz() {
     }, [])
 
     const handleAnswer = (answer) => {
-        const newIndex = currentIndex + 1
-        setCurrentIndex(newIndex)
-
-        if(answer === questions[currentIndex].correct_answer) {
+        if (answer === questions[currentIndex].correct_answer) {
             setScore(score + 1)
         }
 
-        if (newIndex >= questions.length) {
-            setGameEnded(true)
-        }
+        setShowAnswers(true)
+
+        //const newIndex = currentIndex + 1
+        //setCurrentIndex(newIndex)
     }
 
-    return gameEnded ? (
-        <h1>Your score was {score}</h1>
-    ) : (questions.length > 0 ? (
+    return questions.length > 0 ? (
         <div>
-            <Questinaire data={questions[currentIndex]} handleAnswer={handleAnswer} />
+            {currentIndex >= questions.length ? (
+                <h1>Game ended! Your score is: {score}</h1>
+            ) : (
+                    <Questinaire
+                        data={questions[currentIndex]}
+                        showAnswers={showAnswers}
+                        handleAnswer={handleAnswer}
+                    />
+                )}
         </div>
     ) : (
             <h1>Loading</h1>
-        ))
-
+        )
 }
 
 export default Quizz

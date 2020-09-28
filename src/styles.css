@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 
-body {
+html, body {
     font-family: Lato,Helvetica Neue,Arial,Helvetica,sans-serif;
     color: #333;
 
