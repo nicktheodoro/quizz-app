@@ -20,8 +20,11 @@ function Quizz() {
     }, [])
 
     const handleAnswer = (answer) => {
-        if (answer === questions[currentIndex].correct_answer) {
-            setScore(score + 1)
+        if (!showAnswers) {
+            //prevent double answers
+            if (answer === questions[currentIndex].correct_answer) {
+                setScore(score + 1)
+            }
         }
 
         setShowAnswers(true)

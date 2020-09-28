@@ -15,15 +15,15 @@ const Questionaire = ({
             <hr size='1'></hr>
             <div className='answer-container'>
                 {shuffledAnswers.map((answer) => {
-                    const bgColor = showAnswers
+                    const txtColor = showAnswers
                         ? answer === correct_answer
                             ? 'green'
                             : 'red'
-                        : 'white'
+                        : 'rgba(0,0,0,.6)' 
                     return (
                         <button
                             className='ui-btn-answer'
-                            style={{ backgroundColor: `${bgColor}` }}
+                            style={{ color: `${txtColor}` }}
                             onClick={() => handleAnswer(answer)} answer={answer}
                             dangerouslySetInnerHTML={{ __html: answer }}
                         />
