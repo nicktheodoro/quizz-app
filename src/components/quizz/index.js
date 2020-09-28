@@ -28,9 +28,12 @@ function Quizz() {
         }
 
         setShowAnswers(true)
+    }
 
-        //const newIndex = currentIndex + 1
-        //setCurrentIndex(newIndex)
+    const handleNextQuestion = () => {
+        setShowAnswers(false)
+
+        setCurrentIndex(currentIndex +1)
     }
 
     return questions.length > 0 ? (
@@ -41,12 +44,13 @@ function Quizz() {
                     <Questinaire
                         data={questions[currentIndex]}
                         showAnswers={showAnswers}
+                        handleNextQuestion={handleNextQuestion}
                         handleAnswer={handleAnswer}
                     />
                 )}
         </div>
     ) : (
-            <h1>Loading</h1>
+            <div className='loading-container'><h1>Loading</h1></div>
         )
 }
 
