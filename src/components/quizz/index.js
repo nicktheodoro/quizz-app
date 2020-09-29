@@ -15,7 +15,15 @@ function Quizz() {
         fetch(API_URL)
             .then(res => res.json())
             .then(data => {
-                setQuestions(data.results)
+                const questions = data.results.map((question) => ({
+                    ...question,
+                    answers: [question.correct_answer, ...question.incorrect_answers]
+                    .sort(() =>
+                        Math.random() -0.5
+                        )
+                }))
+
+                setQuestions(questions)
             })
     }, [])
 

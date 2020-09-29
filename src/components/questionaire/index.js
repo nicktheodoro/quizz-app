@@ -4,9 +4,8 @@ const Questionaire = ({
     showAnswers,
     handleAnswer,
     handleNextQuestion,
-    data: { question, correct_answer, incorrect_answers },
+    data: { question, correct_answer, answers },
 }) => {
-    const shuffledAnswers = [correct_answer, ...incorrect_answers].sort(() => Math.random() - 0.5)
 
     return (
         <div className='container'>
@@ -15,7 +14,7 @@ const Questionaire = ({
             </div>
             <hr size='1' id='1'></hr>
             <div className='answer-container'>
-                {shuffledAnswers.map((answer) => {
+                {answers.map((answer, idx) => {
                     const txtColor = showAnswers
                         ? answer === correct_answer
                             ? 'green'
@@ -23,6 +22,7 @@ const Questionaire = ({
                         : 'rgba(0,0,0,.6)'
                     return (
                         <button
+                            key={idx}
                             className='ui-btn-answer'
                             style={{ color: `${txtColor}` }}
                             onClick={() => handleAnswer(answer)} answer={answer}
