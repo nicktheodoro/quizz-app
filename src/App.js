@@ -10,7 +10,9 @@ function App() {
   return (
     <div className='App'>
       <Header />
-      <Routes />
+      <div className='App-container'>
+        <Routes />
+      </div>
     </div>
   )
 }

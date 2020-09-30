@@ -7,7 +7,7 @@ header#main-header {
     color: #2185d0;
 
     display: flex;
-    justify-content: left;
+    justify-content: flex-start;
     align-items: center;
 
     padding: 15px;
